@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $orders = Order::latest()->take(5)->get();
+        $orders = Order::with(['assignments', 'emissions'])->latest()->take(3)->get();
 
         $completed = Order::where('completed', true)->count() / Order::count()  * 100;
 //        dd(Order::where('completed', 1)->get());

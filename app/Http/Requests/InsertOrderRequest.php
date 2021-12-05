@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class OrderUpdate extends FormRequest
+class InsertOrderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,8 @@ class OrderUpdate extends FormRequest
         return [
             "title" => "required|max:255",
             "description" => "required|max:2048",
-            "assigned" => "required|exists:users,id",
+            "assignments" => "required|array|exists:users,id",
+            "emissions" => "required|array|exists:users,id",
         ];
     }
 }

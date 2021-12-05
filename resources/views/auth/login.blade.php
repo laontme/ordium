@@ -4,6 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <h1>Система по контролю за исполнением приказов</h1>
+            <h3>ООО «АРМЕЙКА»</h3>
             <div class="card">
                 <div class="card-header">Вход</div>
 

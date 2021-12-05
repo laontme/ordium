@@ -38,8 +38,10 @@
                         @else
                             <li class="nav-item"><a class="nav-link" href="{{route("orders.index")}}">Все приказы</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{route("users.assigned")}}">Назначены мне</a></li>
+                            @if(auth()->user()->role_id != 4)
                             <li class="nav-item"><a class="nav-link" href="{{route("users.issued")}}">Подписаны мной</a></li>
                             <li class="nav-item"><a class="nav-link" href="{{route("orders.create")}}">Создать приказ</a></li>
+                            @endif
                             <li class="nav-item"><a class="nav-link" href="{{route("orders.trash")}}">Корзина</a></li>
                         @endguest
                     </ul>

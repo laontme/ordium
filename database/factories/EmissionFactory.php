@@ -2,10 +2,11 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class OrderFactory extends Factory
+class EmissionFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,9 +16,8 @@ class OrderFactory extends Factory
     public function definition()
     {
         return [
-            "title" => $this->faker->realText(20),
-            "description" => $this->faker->realText(300),
-            "completed" => $this->faker->boolean(20),
+            "user_id" => User::get()->random()->id,
+            "order_id" => Order::get()->random()->id,
         ];
     }
 }

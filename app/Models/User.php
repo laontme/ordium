@@ -12,6 +12,10 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $with = [
+        "role",
+    ];
+
     /**
      * The attributes that are mass assignable.
      *
@@ -42,11 +46,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function issuedOrders() {
-        return $this->hasMany(Order::class, "issuer_id", "id");
+    public function assignments() {
+        return $this->belongsToMany(Order::class, "assignments", "user_id", "order_id");
     }
 
-    public function assignedOrders() {
-        return $this->hasMany(Order::class, "assigned_id", "id");
+    public function emissions() {
+        return $this->belongsToMany(Order::class, "emissions", "user_id", "order_id");
+    }
+
+    public function role() {
+        return $this->belongsTo(Role::class);
     }
 }

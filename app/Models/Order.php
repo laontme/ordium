@@ -15,11 +15,11 @@ class Order extends Model
         "issuer",
     ];
 
-    public function issuedBy() {
-        return $this->belongsTo(User::class, "issuer_id", "id");
+    public function assignments() {
+        return $this->belongsToMany(User::class, "assignments", "order_id", "user_id");
     }
 
-    public function assignedTo() {
-        return $this->belongsTo(User::class, "assigned_id", "id");
+    public function emissions() {
+        return $this->belongsToMany(User::class, "emissions", "order_id", "user_id");
     }
 }

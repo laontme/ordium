@@ -9,13 +9,12 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function assigned(Request $request) {
-        $orders = User::with("assignedOrders")->find(Auth::id())->assignedOrders;
-//        dd($orders);
+        $orders = User::find(auth()->id())->assignments()->with(['assignments', 'emissions'])->get();
         return view('users.assigned', compact('orders'));
     }
 
     public function issued(Request $request) {
-        $orders = User::with("issuedOrders")->find(Auth::id())->issuedOrders;
-        return view('users.issued', compact('orders'));
+        $orders = User::find(auth()->id())->emissions()->with(['assignments', 'emissions'])->get();
+        return view('users.assigned', compact('orders'));
     }
 }

@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+    db:
+        image: mariadb
+        ports:
+            - "3306:3306"
+        volumes:
+            -  db:/var/lib/mysql
+        environment:
+            MARIADB_RANDOM_ROOT_PASSWORD: "yes"
+            MARIADB_DATABASE: ordium
+            MARIADB_USER: ordium
+            MARIADB_PASSWORD: ordium
+
+    pma:
+        image: phpmyadmin
+        ports:
+            - "3000:80"
+        environment:
+            PMA_ARBITRARY: true
+            PMA_USER: ordium
+            PMA_PASSWORD: ordium
+            PMA_HOST: db
+
+volumes:
+    db:

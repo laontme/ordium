@@ -62,6 +62,11 @@
                                 </li>
                             @endif
                         @else
+                            <li class="nav-item">
+                                <div class="nav-link">
+                                    <img src="{{ asset("storage/avatars/" . md5(Str::of(Auth::user()->email)->lower()->trim()) . ".png") }}" alt="">
+                                </div>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
